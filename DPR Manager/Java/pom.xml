@@ -6,14 +6,14 @@
 	
     <groupId>pers.dpr</groupId>
     <artifactId>DPRManager</artifactId>
-    <version>3.8.7</version>
+    <version>0.0.1</version>
 
     <name>dpr</name>
     <url>http://www.dpr.vip</url>
     <description>动态个人简历管理系统</description>
     
     <properties>
-        <dpr.version>3.8.7</dpr.version>
+        <dpr.version>0.0.1</dpr.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>

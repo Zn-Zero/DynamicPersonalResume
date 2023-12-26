@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.dpr.vitae.mapper.VitaeProjectExperienceMapper">
+    
+    <resultMap type="VitaeProjectExperience" id="VitaeProjectExperienceResult">
+        <result property="id"    column="id"    />
+        <result property="userUuid"    column="user_uuid"    />
+        <result property="vitaeUuid"    column="vitae_uuid"    />
+        <result property="porjBelong"    column="porj_belong"    />
+        <result property="projName"    column="proj_name"    />
+        <result property="projMember"    column="proj_member"    />
+        <result property="projDuty"    column="proj_duty"    />
+        <result property="projPic"    column="proj_pic"    />
+        <result property="projDesc"    column="proj_desc"    />
+        <result property="projExhibition"    column="proj_exhibition"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="status"    column="status"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectVitaeProjectExperienceVo">
+        select id, user_uuid, vitae_uuid, porj_belong, proj_name, proj_member, proj_duty, proj_pic, proj_desc, proj_exhibition, create_time, status, update_time from vitae_project_experience
+    </sql>
+
+    <select id="selectVitaeProjectExperienceList" parameterType="VitaeProjectExperience" resultMap="VitaeProjectExperienceResult">
+        <include refid="selectVitaeProjectExperienceVo"/>
+        <where>  
+            <if test="userUuid != null  and userUuid != ''"> and user_uuid = #{userUuid}</if>
+            <if test="vitaeUuid != null  and vitaeUuid != ''"> and vitae_uuid = #{vitaeUuid}</if>
+            <if test="porjBelong != null  and porjBelong != ''"> and porj_belong = #{porjBelong}</if>
+            <if test="projName != null  and projName != ''"> and proj_name like concat('%', #{projName}, '%')</if>
+            <if test="projMember != null  and projMember != ''"> and proj_member = #{projMember}</if>
+            <if test="projDuty != null  and projDuty != ''"> and proj_duty = #{projDuty}</if>
+            <if test="projPic != null  and projPic != ''"> and proj_pic = #{projPic}</if>
+            <if test="projDesc != null  and projDesc != ''"> and proj_desc = #{projDesc}</if>
+            <if test="projExhibition != null  and projExhibition != ''"> and proj_exhibition = #{projExhibition}</if>
+            <if test="status != null "> and status = #{status}</if>
+        </where>
+    </select>
+    
+    <select id="selectVitaeProjectExperienceById" parameterType="Long" resultMap="VitaeProjectExperienceResult">
+        <include refid="selectVitaeProjectExperienceVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertVitaeProjectExperience" parameterType="VitaeProjectExperience" useGeneratedKeys="true" keyProperty="id">
+        insert into vitae_project_experience
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userUuid != null">user_uuid,</if>
+            <if test="vitaeUuid != null">vitae_uuid,</if>
+            <if test="porjBelong != null">porj_belong,</if>
+            <if test="projName != null">proj_name,</if>
+            <if test="projMember != null">proj_member,</if>
+            <if test="projDuty != null">proj_duty,</if>
+            <if test="projPic != null">proj_pic,</if>
+            <if test="projDesc != null">proj_desc,</if>
+            <if test="projExhibition != null">proj_exhibition,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="status != null">status,</if>
+            <if test="updateTime != null">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userUuid != null">#{userUuid},</if>
+            <if test="vitaeUuid != null">#{vitaeUuid},</if>
+            <if test="porjBelong != null">#{porjBelong},</if>
+            <if test="projName != null">#{projName},</if>
+            <if test="projMember != null">#{projMember},</if>
+            <if test="projDuty != null">#{projDuty},</if>
+            <if test="projPic != null">#{projPic},</if>
+            <if test="projDesc != null">#{projDesc},</if>
+            <if test="projExhibition != null">#{projExhibition},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="status != null">#{status},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateVitaeProjectExperience" parameterType="VitaeProjectExperience">
+        update vitae_project_experience
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userUuid != null">user_uuid = #{userUuid},</if>
+            <if test="vitaeUuid != null">vitae_uuid = #{vitaeUuid},</if>
+            <if test="porjBelong != null">porj_belong = #{porjBelong},</if>
+            <if test="projName != null">proj_name = #{projName},</if>
+            <if test="projMember != null">proj_member = #{projMember},</if>
+            <if test="projDuty != null">proj_duty = #{projDuty},</if>
+            <if test="projPic != null">proj_pic = #{projPic},</if>
+            <if test="projDesc != null">proj_desc = #{projDesc},</if>
+            <if test="projExhibition != null">proj_exhibition = #{projExhibition},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteVitaeProjectExperienceById" parameterType="Long">
+        delete from vitae_project_experience where id = #{id}
+    </delete>
+
+    <delete id="deleteVitaeProjectExperienceByIds" parameterType="String">
+        delete from vitae_project_experience where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

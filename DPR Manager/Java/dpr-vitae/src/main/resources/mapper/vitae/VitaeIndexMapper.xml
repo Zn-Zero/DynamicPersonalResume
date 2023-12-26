@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.dpr.vitae.mapper.VitaeIndexMapper">
+    
+    <resultMap type="VitaeIndex" id="VitaeIndexResult">
+        <result property="id"    column="id"    />
+        <result property="userUuid"    column="user_uuid"    />
+        <result property="vitaeUuid"    column="vitae_uuid"    />
+        <result property="vitaeTitle"    column="vitae_title"    />
+        <result property="vitaeFor"    column="vitae_for"    />
+        <result property="name"    column="name"    />
+        <result property="yearsOfWorking"    column="years_of_working"    />
+        <result property="avatar"    column="avatar"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="status"    column="status"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectVitaeIndexVo">
+        select id, user_uuid, vitae_uuid, vitae_title, vitae_for, name, years_of_working, avatar, create_time, status, update_time from vitae_index
+    </sql>
+
+    <select id="selectVitaeIndexList" parameterType="VitaeIndex" resultMap="VitaeIndexResult">
+        <include refid="selectVitaeIndexVo"/>
+        <where>  
+            <if test="userUuid != null "> and user_uuid = #{userUuid}</if>
+            <if test="vitaeUuid != null  and vitaeUuid != ''"> and vitae_uuid = #{vitaeUuid}</if>
+            <if test="vitaeTitle != null  and vitaeTitle != ''"> and vitae_title = #{vitaeTitle}</if>
+            <if test="vitaeFor != null  and vitaeFor != ''"> and vitae_for = #{vitaeFor}</if>
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="yearsOfWorking != null "> and years_of_working = #{yearsOfWorking}</if>
+            <if test="avatar != null  and avatar != ''"> and avatar = #{avatar}</if>
+            <if test="status != null "> and status = #{status}</if>
+        </where>
+    </select>
+    
+    <select id="selectVitaeIndexById" parameterType="Long" resultMap="VitaeIndexResult">
+        <include refid="selectVitaeIndexVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertVitaeIndex" parameterType="VitaeIndex" useGeneratedKeys="true" keyProperty="id">
+        insert into vitae_index
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userUuid != null">user_uuid,</if>
+            <if test="vitaeUuid != null">vitae_uuid,</if>
+            <if test="vitaeTitle != null">vitae_title,</if>
+            <if test="vitaeFor != null">vitae_for,</if>
+            <if test="name != null">name,</if>
+            <if test="yearsOfWorking != null">years_of_working,</if>
+            <if test="avatar != null">avatar,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="status != null">status,</if>
+            <if test="updateTime != null">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userUuid != null">#{userUuid},</if>
+            <if test="vitaeUuid != null">#{vitaeUuid},</if>
+            <if test="vitaeTitle != null">#{vitaeTitle},</if>
+            <if test="vitaeFor != null">#{vitaeFor},</if>
+            <if test="name != null">#{name},</if>
+            <if test="yearsOfWorking != null">#{yearsOfWorking},</if>
+            <if test="avatar != null">#{avatar},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="status != null">#{status},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateVitaeIndex" parameterType="VitaeIndex">
+        update vitae_index
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userUuid != null">user_uuid = #{userUuid},</if>
+            <if test="vitaeUuid != null">vitae_uuid = #{vitaeUuid},</if>
+            <if test="vitaeTitle != null">vitae_title = #{vitaeTitle},</if>
+            <if test="vitaeFor != null">vitae_for = #{vitaeFor},</if>
+            <if test="name != null">name = #{name},</if>
+            <if test="yearsOfWorking != null">years_of_working = #{yearsOfWorking},</if>
+            <if test="avatar != null">avatar = #{avatar},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteVitaeIndexById" parameterType="Long">
+        delete from vitae_index where id = #{id}
+    </delete>
+
+    <delete id="deleteVitaeIndexByIds" parameterType="String">
+        delete from vitae_index where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

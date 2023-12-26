@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.dpr.vitae.mapper.VitaeSkillsMapper">
+    
+    <resultMap type="VitaeSkills" id="VitaeSkillsResult">
+        <result property="id"    column="id"    />
+        <result property="userUuid"    column="user_uuid"    />
+        <result property="vitaeUuid"    column="vitae_uuid"    />
+        <result property="skillName"    column="skill_name"    />
+        <result property="skillUseTime"    column="skill_use_time"    />
+        <result property="skillPic"    column="skill_pic"    />
+        <result property="skillDesc"    column="skill_desc"    />
+        <result property="skillIntroductory"    column="skill_introductory"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="status"    column="status"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectVitaeSkillsVo">
+        select id, user_uuid, vitae_uuid, skill_name, skill_use_time, skill_pic, skill_desc, skill_introductory, create_time, status, update_time from vitae_skills
+    </sql>
+
+    <select id="selectVitaeSkillsList" parameterType="VitaeSkills" resultMap="VitaeSkillsResult">
+        <include refid="selectVitaeSkillsVo"/>
+        <where>  
+            <if test="userUuid != null  and userUuid != ''"> and user_uuid = #{userUuid}</if>
+            <if test="vitaeUuid != null  and vitaeUuid != ''"> and vitae_uuid = #{vitaeUuid}</if>
+            <if test="skillName != null  and skillName != ''"> and skill_name like concat('%', #{skillName}, '%')</if>
+            <if test="skillUseTime != null  and skillUseTime != ''"> and skill_use_time = #{skillUseTime}</if>
+            <if test="skillPic != null  and skillPic != ''"> and skill_pic = #{skillPic}</if>
+            <if test="skillDesc != null  and skillDesc != ''"> and skill_desc = #{skillDesc}</if>
+            <if test="skillIntroductory != null  and skillIntroductory != ''"> and skill_introductory = #{skillIntroductory}</if>
+            <if test="status != null "> and status = #{status}</if>
+        </where>
+    </select>
+    
+    <select id="selectVitaeSkillsById" parameterType="Long" resultMap="VitaeSkillsResult">
+        <include refid="selectVitaeSkillsVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertVitaeSkills" parameterType="VitaeSkills" useGeneratedKeys="true" keyProperty="id">
+        insert into vitae_skills
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userUuid != null">user_uuid,</if>
+            <if test="vitaeUuid != null">vitae_uuid,</if>
+            <if test="skillName != null">skill_name,</if>
+            <if test="skillUseTime != null">skill_use_time,</if>
+            <if test="skillPic != null">skill_pic,</if>
+            <if test="skillDesc != null">skill_desc,</if>
+            <if test="skillIntroductory != null">skill_introductory,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="status != null">status,</if>
+            <if test="updateTime != null">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userUuid != null">#{userUuid},</if>
+            <if test="vitaeUuid != null">#{vitaeUuid},</if>
+            <if test="skillName != null">#{skillName},</if>
+            <if test="skillUseTime != null">#{skillUseTime},</if>
+            <if test="skillPic != null">#{skillPic},</if>
+            <if test="skillDesc != null">#{skillDesc},</if>
+            <if test="skillIntroductory != null">#{skillIntroductory},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="status != null">#{status},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateVitaeSkills" parameterType="VitaeSkills">
+        update vitae_skills
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userUuid != null">user_uuid = #{userUuid},</if>
+            <if test="vitaeUuid != null">vitae_uuid = #{vitaeUuid},</if>
+            <if test="skillName != null">skill_name = #{skillName},</if>
+            <if test="skillUseTime != null">skill_use_time = #{skillUseTime},</if>
+            <if test="skillPic != null">skill_pic = #{skillPic},</if>
+            <if test="skillDesc != null">skill_desc = #{skillDesc},</if>
+            <if test="skillIntroductory != null">skill_introductory = #{skillIntroductory},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteVitaeSkillsById" parameterType="Long">
+        delete from vitae_skills where id = #{id}
+    </delete>
+
+    <delete id="deleteVitaeSkillsByIds" parameterType="String">
+        delete from vitae_skills where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

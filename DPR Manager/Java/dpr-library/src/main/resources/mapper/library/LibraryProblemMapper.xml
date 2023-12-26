@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.dpr.library.mapper.LibraryProblemMapper">
+    
+    <resultMap type="LibraryProblem" id="LibraryProblemResult">
+        <result property="id"    column="id"    />
+        <result property="userUuid"    column="user_uuid"    />
+        <result property="problemUuid"    column="problem_uuid"    />
+        <result property="problem"    column="problem"    />
+        <result property="from"    column="from"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="status"    column="status"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectLibraryProblemVo">
+        select id, user_uuid, problem_uuid, problem, from, create_time, status, update_time from library_problem
+    </sql>
+
+    <select id="selectLibraryProblemList" parameterType="LibraryProblem" resultMap="LibraryProblemResult">
+        <include refid="selectLibraryProblemVo"/>
+        <where>  
+            <if test="userUuid != null  and userUuid != ''"> and user_uuid = #{userUuid}</if>
+            <if test="problemUuid != null  and problemUuid != ''"> and problem_uuid = #{problemUuid}</if>
+            <if test="problem != null  and problem != ''"> and problem = #{problem}</if>
+            <if test="from != null  and from != ''"> and from = #{from}</if>
+            <if test="status != null "> and status = #{status}</if>
+        </where>
+    </select>
+    
+    <select id="selectLibraryProblemById" parameterType="Long" resultMap="LibraryProblemResult">
+        <include refid="selectLibraryProblemVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertLibraryProblem" parameterType="LibraryProblem" useGeneratedKeys="true" keyProperty="id">
+        insert into library_problem
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userUuid != null">user_uuid,</if>
+            <if test="problemUuid != null">problem_uuid,</if>
+            <if test="problem != null">problem,</if>
+            <if test="from != null">from,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="status != null">status,</if>
+            <if test="updateTime != null">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userUuid != null">#{userUuid},</if>
+            <if test="problemUuid != null">#{problemUuid},</if>
+            <if test="problem != null">#{problem},</if>
+            <if test="from != null">#{from},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="status != null">#{status},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateLibraryProblem" parameterType="LibraryProblem">
+        update library_problem
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userUuid != null">user_uuid = #{userUuid},</if>
+            <if test="problemUuid != null">problem_uuid = #{problemUuid},</if>
+            <if test="problem != null">problem = #{problem},</if>
+            <if test="from != null">from = #{from},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteLibraryProblemById" parameterType="Long">
+        delete from library_problem where id = #{id}
+    </delete>
+
+    <delete id="deleteLibraryProblemByIds" parameterType="String">
+        delete from library_problem where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

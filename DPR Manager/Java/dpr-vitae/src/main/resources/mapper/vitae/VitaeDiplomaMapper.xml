@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.dpr.vitae.mapper.VitaeDiplomaMapper">
+    
+    <resultMap type="VitaeDiploma" id="VitaeDiplomaResult">
+        <result property="id"    column="id"    />
+        <result property="userUuid"    column="user_uuid"    />
+        <result property="vitaeUuid"    column="vitae_uuid"    />
+        <result property="schoolName"    column="school_name"    />
+        <result property="graduationDate"    column="graduation_date"    />
+        <result property="diplomaPic"    column="diploma_pic"    />
+        <result property="diplomaNo"    column="diploma_no"    />
+        <result property="hasDegree"    column="has_degree"    />
+        <result property="degreeNo"    column="degree_no"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="status"    column="status"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectVitaeDiplomaVo">
+        select id, user_uuid, vitae_uuid, school_name, graduation_date, diploma_pic, diploma_no, has_degree, degree_no, create_time, status, update_time from vitae_diploma
+    </sql>
+
+    <select id="selectVitaeDiplomaList" parameterType="VitaeDiploma" resultMap="VitaeDiplomaResult">
+        <include refid="selectVitaeDiplomaVo"/>
+        <where>  
+            <if test="userUuid != null  and userUuid != ''"> and user_uuid = #{userUuid}</if>
+            <if test="vitaeUuid != null  and vitaeUuid != ''"> and vitae_uuid = #{vitaeUuid}</if>
+            <if test="schoolName != null  and schoolName != ''"> and school_name like concat('%', #{schoolName}, '%')</if>
+            <if test="graduationDate != null  and graduationDate != ''"> and graduation_date = #{graduationDate}</if>
+            <if test="diplomaPic != null  and diplomaPic != ''"> and diploma_pic = #{diplomaPic}</if>
+            <if test="diplomaNo != null  and diplomaNo != ''"> and diploma_no = #{diplomaNo}</if>
+            <if test="hasDegree != null "> and has_degree = #{hasDegree}</if>
+            <if test="degreeNo != null  and degreeNo != ''"> and degree_no = #{degreeNo}</if>
+            <if test="status != null "> and status = #{status}</if>
+        </where>
+    </select>
+    
+    <select id="selectVitaeDiplomaById" parameterType="Long" resultMap="VitaeDiplomaResult">
+        <include refid="selectVitaeDiplomaVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertVitaeDiploma" parameterType="VitaeDiploma" useGeneratedKeys="true" keyProperty="id">
+        insert into vitae_diploma
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userUuid != null">user_uuid,</if>
+            <if test="vitaeUuid != null">vitae_uuid,</if>
+            <if test="schoolName != null">school_name,</if>
+            <if test="graduationDate != null">graduation_date,</if>
+            <if test="diplomaPic != null">diploma_pic,</if>
+            <if test="diplomaNo != null">diploma_no,</if>
+            <if test="hasDegree != null">has_degree,</if>
+            <if test="degreeNo != null">degree_no,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="status != null">status,</if>
+            <if test="updateTime != null">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userUuid != null">#{userUuid},</if>
+            <if test="vitaeUuid != null">#{vitaeUuid},</if>
+            <if test="schoolName != null">#{schoolName},</if>
+            <if test="graduationDate != null">#{graduationDate},</if>
+            <if test="diplomaPic != null">#{diplomaPic},</if>
+            <if test="diplomaNo != null">#{diplomaNo},</if>
+            <if test="hasDegree != null">#{hasDegree},</if>
+            <if test="degreeNo != null">#{degreeNo},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="status != null">#{status},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateVitaeDiploma" parameterType="VitaeDiploma">
+        update vitae_diploma
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userUuid != null">user_uuid = #{userUuid},</if>
+            <if test="vitaeUuid != null">vitae_uuid = #{vitaeUuid},</if>
+            <if test="schoolName != null">school_name = #{schoolName},</if>
+            <if test="graduationDate != null">graduation_date = #{graduationDate},</if>
+            <if test="diplomaPic != null">diploma_pic = #{diplomaPic},</if>
+            <if test="diplomaNo != null">diploma_no = #{diplomaNo},</if>
+            <if test="hasDegree != null">has_degree = #{hasDegree},</if>
+            <if test="degreeNo != null">degree_no = #{degreeNo},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteVitaeDiplomaById" parameterType="Long">
+        delete from vitae_diploma where id = #{id}
+    </delete>
+
+    <delete id="deleteVitaeDiplomaByIds" parameterType="String">
+        delete from vitae_diploma where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

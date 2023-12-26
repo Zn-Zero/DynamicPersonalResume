@@ -180,6 +180,9 @@
         <module>dpr-quartz</module>
         <module>dpr-generator</module>
         <module>dpr-common</module>
+        <module>dpr-record</module>
+        <module>dpr-vitae</module>
+        <module>dpr-library</module>
     </modules>
     <packaging>pom</packaging>
 

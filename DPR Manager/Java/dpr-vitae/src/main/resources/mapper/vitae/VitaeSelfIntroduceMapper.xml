@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.dpr.vitae.mapper.VitaeSelfIntroduceMapper">
+    
+    <resultMap type="VitaeSelfIntroduce" id="VitaeSelfIntroduceResult">
+        <result property="id"    column="id"    />
+        <result property="userUuid"    column="user_uuid"    />
+        <result property="vitaeUuid"    column="vitae_uuid"    />
+        <result property="content"    column="content"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="status"    column="status"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectVitaeSelfIntroduceVo">
+        select id, user_uuid, vitae_uuid, content, create_time, status, update_time from vitae_self_introduce
+    </sql>
+
+    <select id="selectVitaeSelfIntroduceList" parameterType="VitaeSelfIntroduce" resultMap="VitaeSelfIntroduceResult">
+        <include refid="selectVitaeSelfIntroduceVo"/>
+        <where>  
+            <if test="userUuid != null  and userUuid != ''"> and user_uuid = #{userUuid}</if>
+            <if test="vitaeUuid != null  and vitaeUuid != ''"> and vitae_uuid = #{vitaeUuid}</if>
+            <if test="content != null  and content != ''"> and content = #{content}</if>
+            <if test="status != null "> and status = #{status}</if>
+        </where>
+    </select>
+    
+    <select id="selectVitaeSelfIntroduceById" parameterType="Long" resultMap="VitaeSelfIntroduceResult">
+        <include refid="selectVitaeSelfIntroduceVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertVitaeSelfIntroduce" parameterType="VitaeSelfIntroduce" useGeneratedKeys="true" keyProperty="id">
+        insert into vitae_self_introduce
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userUuid != null">user_uuid,</if>
+            <if test="vitaeUuid != null">vitae_uuid,</if>
+            <if test="content != null">content,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="status != null">status,</if>
+            <if test="updateTime != null">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userUuid != null">#{userUuid},</if>
+            <if test="vitaeUuid != null">#{vitaeUuid},</if>
+            <if test="content != null">#{content},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="status != null">#{status},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateVitaeSelfIntroduce" parameterType="VitaeSelfIntroduce">
+        update vitae_self_introduce
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userUuid != null">user_uuid = #{userUuid},</if>
+            <if test="vitaeUuid != null">vitae_uuid = #{vitaeUuid},</if>
+            <if test="content != null">content = #{content},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteVitaeSelfIntroduceById" parameterType="Long">
+        delete from vitae_self_introduce where id = #{id}
+    </delete>
+
+    <delete id="deleteVitaeSelfIntroduceByIds" parameterType="String">
+        delete from vitae_self_introduce where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

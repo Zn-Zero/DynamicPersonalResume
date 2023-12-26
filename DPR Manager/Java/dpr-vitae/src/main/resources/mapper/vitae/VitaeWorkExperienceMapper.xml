@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.dpr.vitae.mapper.VitaeWorkExperienceMapper">
+    
+    <resultMap type="VitaeWorkExperience" id="VitaeWorkExperienceResult">
+        <result property="id"    column="id"    />
+        <result property="userUuid"    column="user_uuid"    />
+        <result property="vitaeUuid"    column="vitae_uuid"    />
+        <result property="comName"    column="com_name"    />
+        <result property="comDesc"    column="com_desc"    />
+        <result property="comPic"    column="com_pic"    />
+        <result property="post"    column="post"    />
+        <result property="workYear"    column="work_year"    />
+        <result property="workDone"    column="work_done"    />
+        <result property="workReward"    column="work_reward"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="status"    column="status"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectVitaeWorkExperienceVo">
+        select id, user_uuid, vitae_uuid, com_name, com_desc, com_pic, post, work_year, work_done, work_reward, create_time, status, update_time from vitae_work_experience
+    </sql>
+
+    <select id="selectVitaeWorkExperienceList" parameterType="VitaeWorkExperience" resultMap="VitaeWorkExperienceResult">
+        <include refid="selectVitaeWorkExperienceVo"/>
+        <where>  
+            <if test="userUuid != null  and userUuid != ''"> and user_uuid = #{userUuid}</if>
+            <if test="vitaeUuid != null  and vitaeUuid != ''"> and vitae_uuid = #{vitaeUuid}</if>
+            <if test="comName != null  and comName != ''"> and com_name like concat('%', #{comName}, '%')</if>
+            <if test="comDesc != null  and comDesc != ''"> and com_desc = #{comDesc}</if>
+            <if test="comPic != null  and comPic != ''"> and com_pic = #{comPic}</if>
+            <if test="post != null  and post != ''"> and post = #{post}</if>
+            <if test="workYear != null "> and work_year = #{workYear}</if>
+            <if test="workDone != null  and workDone != ''"> and work_done = #{workDone}</if>
+            <if test="workReward != null  and workReward != ''"> and work_reward = #{workReward}</if>
+            <if test="status != null "> and status = #{status}</if>
+        </where>
+    </select>
+    
+    <select id="selectVitaeWorkExperienceById" parameterType="Long" resultMap="VitaeWorkExperienceResult">
+        <include refid="selectVitaeWorkExperienceVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertVitaeWorkExperience" parameterType="VitaeWorkExperience" useGeneratedKeys="true" keyProperty="id">
+        insert into vitae_work_experience
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userUuid != null">user_uuid,</if>
+            <if test="vitaeUuid != null">vitae_uuid,</if>
+            <if test="comName != null">com_name,</if>
+            <if test="comDesc != null">com_desc,</if>
+            <if test="comPic != null">com_pic,</if>
+            <if test="post != null">post,</if>
+            <if test="workYear != null">work_year,</if>
+            <if test="workDone != null">work_done,</if>
+            <if test="workReward != null">work_reward,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="status != null">status,</if>
+            <if test="updateTime != null">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userUuid != null">#{userUuid},</if>
+            <if test="vitaeUuid != null">#{vitaeUuid},</if>
+            <if test="comName != null">#{comName},</if>
+            <if test="comDesc != null">#{comDesc},</if>
+            <if test="comPic != null">#{comPic},</if>
+            <if test="post != null">#{post},</if>
+            <if test="workYear != null">#{workYear},</if>
+            <if test="workDone != null">#{workDone},</if>
+            <if test="workReward != null">#{workReward},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="status != null">#{status},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateVitaeWorkExperience" parameterType="VitaeWorkExperience">
+        update vitae_work_experience
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userUuid != null">user_uuid = #{userUuid},</if>
+            <if test="vitaeUuid != null">vitae_uuid = #{vitaeUuid},</if>
+            <if test="comName != null">com_name = #{comName},</if>
+            <if test="comDesc != null">com_desc = #{comDesc},</if>
+            <if test="comPic != null">com_pic = #{comPic},</if>
+            <if test="post != null">post = #{post},</if>
+            <if test="workYear != null">work_year = #{workYear},</if>
+            <if test="workDone != null">work_done = #{workDone},</if>
+            <if test="workReward != null">work_reward = #{workReward},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteVitaeWorkExperienceById" parameterType="Long">
+        delete from vitae_work_experience where id = #{id}
+    </delete>
+
+    <delete id="deleteVitaeWorkExperienceByIds" parameterType="String">
+        delete from vitae_work_experience where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

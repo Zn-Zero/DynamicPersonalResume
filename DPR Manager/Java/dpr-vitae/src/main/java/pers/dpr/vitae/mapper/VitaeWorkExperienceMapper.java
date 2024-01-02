@@ -4,55 +4,53 @@ import java.util.List;
 import pers.dpr.vitae.domain.VitaeWorkExperience;
 
 /**
- * 【请填写功能名称】Mapper接口
- * 
- * @author ry
+ * @author auto
  * @date 2023-12-26
  */
 public interface VitaeWorkExperienceMapper 
 {
     /**
-     * 查询【请填写功能名称】
+     * 查询
      * 
-     * @param id 【请填写功能名称】主键
-     * @return 【请填写功能名称】
+     * @param id 主键
+     * @return 
      */
     public VitaeWorkExperience selectVitaeWorkExperienceById(Long id);
 
     /**
-     * 查询【请填写功能名称】列表
+     * 查询列表
      * 
-     * @param vitaeWorkExperience 【请填写功能名称】
-     * @return 【请填写功能名称】集合
+     * @param vitaeWorkExperience 
+     * @return 集合
      */
     public List<VitaeWorkExperience> selectVitaeWorkExperienceList(VitaeWorkExperience vitaeWorkExperience);
 
     /**
-     * 新增【请填写功能名称】
+     * 新增
      * 
-     * @param vitaeWorkExperience 【请填写功能名称】
+     * @param vitaeWorkExperience 
      * @return 结果
      */
     public int insertVitaeWorkExperience(VitaeWorkExperience vitaeWorkExperience);
 
     /**
-     * 修改【请填写功能名称】
+     * 修改
      * 
-     * @param vitaeWorkExperience 【请填写功能名称】
+     * @param vitaeWorkExperience 
      * @return 结果
      */
     public int updateVitaeWorkExperience(VitaeWorkExperience vitaeWorkExperience);
 
     /**
-     * 删除【请填写功能名称】
+     * 删除
      * 
-     * @param id 【请填写功能名称】主键
+     * @param id 主键
      * @return 结果
      */
     public int deleteVitaeWorkExperienceById(Long id);
 
     /**
-     * 批量删除【请填写功能名称】
+     * 批量删除
      * 
      * @param ids 需要删除的数据主键集合
      * @return 结果

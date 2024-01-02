@@ -22,22 +22,20 @@ import pers.dpr.common.utils.poi.ExcelUtil;
 import pers.dpr.common.core.page.TableDataInfo;
 
 /**
- * 【请填写功能名称】Controller
- * 
- * @author ry
+ * @author auto
  * @date 2023-12-26
  */
 @RestController
-@RequestMapping("/system/problem")
+@RequestMapping("/library/problem")
 public class LibraryProblemController extends BaseController
 {
     @Autowired
     private ILibraryProblemService libraryProblemService;
 
     /**
-     * 查询【请填写功能名称】列表
+     * 查询列表
      */
-    @PreAuthorize("@ss.hasPermi('system:problem:list')")
+    @PreAuthorize("@ss.hasPermi('library:problem:list')")
     @GetMapping("/list")
     public TableDataInfo list(LibraryProblem libraryProblem)
     {
@@ -47,22 +45,22 @@ public class LibraryProblemController extends BaseController
     }
 
     /**
-     * 导出【请填写功能名称】列表
+     * 导出列表
      */
-    @PreAuthorize("@ss.hasPermi('system:problem:export')")
-    @Log(title = "【请填写功能名称】", businessType = BusinessType.EXPORT)
+    @PreAuthorize("@ss.hasPermi('library:problem:export')")
+    @Log(title = "", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     public void export(HttpServletResponse response, LibraryProblem libraryProblem)
     {
         List<LibraryProblem> list = libraryProblemService.selectLibraryProblemList(libraryProblem);
         ExcelUtil<LibraryProblem> util = new ExcelUtil<LibraryProblem>(LibraryProblem.class);
-        util.exportExcel(response, list, "【请填写功能名称】数据");
+        util.exportExcel(response, list, "数据");
     }
 
     /**
-     * 获取【请填写功能名称】详细信息
+     * 获取详细信息
      */
-    @PreAuthorize("@ss.hasPermi('system:problem:query')")
+    @PreAuthorize("@ss.hasPermi('library:problem:query')")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id)
     {
@@ -70,10 +68,10 @@ public class LibraryProblemController extends BaseController
     }
 
     /**
-     * 新增【请填写功能名称】
+     * 新增
      */
-    @PreAuthorize("@ss.hasPermi('system:problem:add')")
-    @Log(title = "【请填写功能名称】", businessType = BusinessType.INSERT)
+    @PreAuthorize("@ss.hasPermi('library:problem:add')")
+    @Log(title = "", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody LibraryProblem libraryProblem)
     {
@@ -81,10 +79,10 @@ public class LibraryProblemController extends BaseController
     }
 
     /**
-     * 修改【请填写功能名称】
+     * 修改
      */
-    @PreAuthorize("@ss.hasPermi('system:problem:edit')")
-    @Log(title = "【请填写功能名称】", businessType = BusinessType.UPDATE)
+    @PreAuthorize("@ss.hasPermi('library:problem:edit')")
+    @Log(title = "", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@RequestBody LibraryProblem libraryProblem)
     {
@@ -92,10 +90,10 @@ public class LibraryProblemController extends BaseController
     }
 
     /**
-     * 删除【请填写功能名称】
+     * 删除
      */
-    @PreAuthorize("@ss.hasPermi('system:problem:remove')")
-    @Log(title = "【请填写功能名称】", businessType = BusinessType.DELETE)
+    @PreAuthorize("@ss.hasPermi('library:problem:remove')")
+    @Log(title = "", businessType = BusinessType.DELETE)
 	@DeleteMapping("/{ids}")
     public AjaxResult remove(@PathVariable Long[] ids)
     {

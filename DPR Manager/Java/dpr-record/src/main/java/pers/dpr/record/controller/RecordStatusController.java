@@ -22,22 +22,20 @@ import pers.dpr.common.utils.poi.ExcelUtil;
 import pers.dpr.common.core.page.TableDataInfo;
 
 /**
- * 【请填写功能名称】Controller
- * 
- * @author ry
+ * @author auto
  * @date 2023-12-26
  */
 @RestController
-@RequestMapping("/system/status")
+@RequestMapping("/record/status")
 public class RecordStatusController extends BaseController
 {
     @Autowired
     private IRecordStatusService recordStatusService;
 
     /**
-     * 查询【请填写功能名称】列表
+     * 查询列表
      */
-    @PreAuthorize("@ss.hasPermi('system:status:list')")
+    @PreAuthorize("@ss.hasPermi('record:status:list')")
     @GetMapping("/list")
     public TableDataInfo list(RecordStatus recordStatus)
     {
@@ -47,22 +45,22 @@ public class RecordStatusController extends BaseController
     }
 
     /**
-     * 导出【请填写功能名称】列表
+     * 导出列表
      */
-    @PreAuthorize("@ss.hasPermi('system:status:export')")
-    @Log(title = "【请填写功能名称】", businessType = BusinessType.EXPORT)
+    @PreAuthorize("@ss.hasPermi('record:status:export')")
+    @Log(title = "", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     public void export(HttpServletResponse response, RecordStatus recordStatus)
     {
         List<RecordStatus> list = recordStatusService.selectRecordStatusList(recordStatus);
         ExcelUtil<RecordStatus> util = new ExcelUtil<RecordStatus>(RecordStatus.class);
-        util.exportExcel(response, list, "【请填写功能名称】数据");
+        util.exportExcel(response, list, "数据");
     }
 
     /**
-     * 获取【请填写功能名称】详细信息
+     * 获取详细信息
      */
-    @PreAuthorize("@ss.hasPermi('system:status:query')")
+    @PreAuthorize("@ss.hasPermi('record:status:query')")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id)
     {
@@ -70,10 +68,10 @@ public class RecordStatusController extends BaseController
     }
 
     /**
-     * 新增【请填写功能名称】
+     * 新增
      */
-    @PreAuthorize("@ss.hasPermi('system:status:add')")
-    @Log(title = "【请填写功能名称】", businessType = BusinessType.INSERT)
+    @PreAuthorize("@ss.hasPermi('record:status:add')")
+    @Log(title = "", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody RecordStatus recordStatus)
     {
@@ -81,10 +79,10 @@ public class RecordStatusController extends BaseController
     }
 
     /**
-     * 修改【请填写功能名称】
+     * 修改
      */
-    @PreAuthorize("@ss.hasPermi('system:status:edit')")
-    @Log(title = "【请填写功能名称】", businessType = BusinessType.UPDATE)
+    @PreAuthorize("@ss.hasPermi('record:status:edit')")
+    @Log(title = "", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@RequestBody RecordStatus recordStatus)
     {
@@ -92,10 +90,10 @@ public class RecordStatusController extends BaseController
     }
 
     /**
-     * 删除【请填写功能名称】
+     * 删除
      */
-    @PreAuthorize("@ss.hasPermi('system:status:remove')")
-    @Log(title = "【请填写功能名称】", businessType = BusinessType.DELETE)
+    @PreAuthorize("@ss.hasPermi('record:status:remove')")
+    @Log(title = "", businessType = BusinessType.DELETE)
 	@DeleteMapping("/{ids}")
     public AjaxResult remove(@PathVariable Long[] ids)
     {

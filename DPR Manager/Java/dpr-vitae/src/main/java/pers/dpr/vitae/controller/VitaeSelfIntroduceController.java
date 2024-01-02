@@ -22,22 +22,20 @@ import pers.dpr.common.utils.poi.ExcelUtil;
 import pers.dpr.common.core.page.TableDataInfo;
 
 /**
- * 【请填写功能名称】Controller
- * 
- * @author ry
+ * @author auto
  * @date 2023-12-26
  */
 @RestController
-@RequestMapping("/system/introduce")
+@RequestMapping("/vitae/introduce")
 public class VitaeSelfIntroduceController extends BaseController
 {
     @Autowired
     private IVitaeSelfIntroduceService vitaeSelfIntroduceService;
 
     /**
-     * 查询【请填写功能名称】列表
+     * 查询列表
      */
-    @PreAuthorize("@ss.hasPermi('system:introduce:list')")
+    @PreAuthorize("@ss.hasPermi('vitae:introduce:list')")
     @GetMapping("/list")
     public TableDataInfo list(VitaeSelfIntroduce vitaeSelfIntroduce)
     {
@@ -47,22 +45,22 @@ public class VitaeSelfIntroduceController extends BaseController
     }
 
     /**
-     * 导出【请填写功能名称】列表
+     * 导出列表
      */
-    @PreAuthorize("@ss.hasPermi('system:introduce:export')")
-    @Log(title = "【请填写功能名称】", businessType = BusinessType.EXPORT)
+    @PreAuthorize("@ss.hasPermi('vitae:introduce:export')")
+    @Log(title = "", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     public void export(HttpServletResponse response, VitaeSelfIntroduce vitaeSelfIntroduce)
     {
         List<VitaeSelfIntroduce> list = vitaeSelfIntroduceService.selectVitaeSelfIntroduceList(vitaeSelfIntroduce);
         ExcelUtil<VitaeSelfIntroduce> util = new ExcelUtil<VitaeSelfIntroduce>(VitaeSelfIntroduce.class);
-        util.exportExcel(response, list, "【请填写功能名称】数据");
+        util.exportExcel(response, list, "数据");
     }
 
     /**
-     * 获取【请填写功能名称】详细信息
+     * 获取详细信息
      */
-    @PreAuthorize("@ss.hasPermi('system:introduce:query')")
+    @PreAuthorize("@ss.hasPermi('vitae:introduce:query')")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id)
     {
@@ -70,10 +68,10 @@ public class VitaeSelfIntroduceController extends BaseController
     }
 
     /**
-     * 新增【请填写功能名称】
+     * 新增
      */
-    @PreAuthorize("@ss.hasPermi('system:introduce:add')")
-    @Log(title = "【请填写功能名称】", businessType = BusinessType.INSERT)
+    @PreAuthorize("@ss.hasPermi('vitae:introduce:add')")
+    @Log(title = "", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody VitaeSelfIntroduce vitaeSelfIntroduce)
     {
@@ -81,10 +79,10 @@ public class VitaeSelfIntroduceController extends BaseController
     }
 
     /**
-     * 修改【请填写功能名称】
+     * 修改
      */
-    @PreAuthorize("@ss.hasPermi('system:introduce:edit')")
-    @Log(title = "【请填写功能名称】", businessType = BusinessType.UPDATE)
+    @PreAuthorize("@ss.hasPermi('vitae:introduce:edit')")
+    @Log(title = "", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@RequestBody VitaeSelfIntroduce vitaeSelfIntroduce)
     {
@@ -92,10 +90,10 @@ public class VitaeSelfIntroduceController extends BaseController
     }
 
     /**
-     * 删除【请填写功能名称】
+     * 删除
      */
-    @PreAuthorize("@ss.hasPermi('system:introduce:remove')")
-    @Log(title = "【请填写功能名称】", businessType = BusinessType.DELETE)
+    @PreAuthorize("@ss.hasPermi('vitae:introduce:remove')")
+    @Log(title = "", businessType = BusinessType.DELETE)
 	@DeleteMapping("/{ids}")
     public AjaxResult remove(@PathVariable Long[] ids)
     {

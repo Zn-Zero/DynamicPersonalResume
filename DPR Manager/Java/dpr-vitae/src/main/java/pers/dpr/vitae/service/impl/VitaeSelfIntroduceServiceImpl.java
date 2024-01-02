@@ -9,9 +9,7 @@ import pers.dpr.vitae.domain.VitaeSelfIntroduce;
 import pers.dpr.vitae.service.IVitaeSelfIntroduceService;
 
 /**
- * 【请填写功能名称】Service业务层处理
- * 
- * @author ry
+ * @author auto
  * @date 2023-12-26
  */
 @Service
@@ -21,10 +19,10 @@ public class VitaeSelfIntroduceServiceImpl implements IVitaeSelfIntroduceService
     private VitaeSelfIntroduceMapper vitaeSelfIntroduceMapper;
 
     /**
-     * 查询【请填写功能名称】
+     * 查询
      * 
-     * @param id 【请填写功能名称】主键
-     * @return 【请填写功能名称】
+     * @param id 主键
+     * @return 
      */
     @Override
     public VitaeSelfIntroduce selectVitaeSelfIntroduceById(Long id)
@@ -33,10 +31,10 @@ public class VitaeSelfIntroduceServiceImpl implements IVitaeSelfIntroduceService
     }
 
     /**
-     * 查询【请填写功能名称】列表
+     * 查询列表
      * 
-     * @param vitaeSelfIntroduce 【请填写功能名称】
-     * @return 【请填写功能名称】
+     * @param vitaeSelfIntroduce 
+     * @return 
      */
     @Override
     public List<VitaeSelfIntroduce> selectVitaeSelfIntroduceList(VitaeSelfIntroduce vitaeSelfIntroduce)
@@ -45,9 +43,9 @@ public class VitaeSelfIntroduceServiceImpl implements IVitaeSelfIntroduceService
     }
 
     /**
-     * 新增【请填写功能名称】
+     * 新增
      * 
-     * @param vitaeSelfIntroduce 【请填写功能名称】
+     * @param vitaeSelfIntroduce 
      * @return 结果
      */
     @Override
@@ -58,9 +56,9 @@ public class VitaeSelfIntroduceServiceImpl implements IVitaeSelfIntroduceService
     }
 
     /**
-     * 修改【请填写功能名称】
+     * 修改
      * 
-     * @param vitaeSelfIntroduce 【请填写功能名称】
+     * @param vitaeSelfIntroduce 
      * @return 结果
      */
     @Override
@@ -71,9 +69,9 @@ public class VitaeSelfIntroduceServiceImpl implements IVitaeSelfIntroduceService
     }
 
     /**
-     * 批量删除【请填写功能名称】
+     * 批量删除
      * 
-     * @param ids 需要删除的【请填写功能名称】主键
+     * @param ids 需要删除的主键
      * @return 结果
      */
     @Override
@@ -83,9 +81,9 @@ public class VitaeSelfIntroduceServiceImpl implements IVitaeSelfIntroduceService
     }
 
     /**
-     * 删除【请填写功能名称】信息
+     * 删除信息
      * 
-     * @param id 【请填写功能名称】主键
+     * @param id 主键
      * @return 结果
      */
     @Override

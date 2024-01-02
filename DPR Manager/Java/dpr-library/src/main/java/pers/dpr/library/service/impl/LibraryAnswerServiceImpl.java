@@ -9,9 +9,7 @@ import pers.dpr.library.domain.LibraryAnswer;
 import pers.dpr.library.service.ILibraryAnswerService;
 
 /**
- * 【请填写功能名称】Service业务层处理
- * 
- * @author ry
+ * @author auto
  * @date 2023-12-26
  */
 @Service
@@ -21,10 +19,10 @@ public class LibraryAnswerServiceImpl implements ILibraryAnswerService
     private LibraryAnswerMapper libraryAnswerMapper;
 
     /**
-     * 查询【请填写功能名称】
+     * 查询
      * 
-     * @param id 【请填写功能名称】主键
-     * @return 【请填写功能名称】
+     * @param id 主键
+     * @return 
      */
     @Override
     public LibraryAnswer selectLibraryAnswerById(Long id)
@@ -33,10 +31,10 @@ public class LibraryAnswerServiceImpl implements ILibraryAnswerService
     }
 
     /**
-     * 查询【请填写功能名称】列表
+     * 查询列表
      * 
-     * @param libraryAnswer 【请填写功能名称】
-     * @return 【请填写功能名称】
+     * @param libraryAnswer 
+     * @return 
      */
     @Override
     public List<LibraryAnswer> selectLibraryAnswerList(LibraryAnswer libraryAnswer)
@@ -45,9 +43,9 @@ public class LibraryAnswerServiceImpl implements ILibraryAnswerService
     }
 
     /**
-     * 新增【请填写功能名称】
+     * 新增
      * 
-     * @param libraryAnswer 【请填写功能名称】
+     * @param libraryAnswer 
      * @return 结果
      */
     @Override
@@ -58,9 +56,9 @@ public class LibraryAnswerServiceImpl implements ILibraryAnswerService
     }
 
     /**
-     * 修改【请填写功能名称】
+     * 修改
      * 
-     * @param libraryAnswer 【请填写功能名称】
+     * @param libraryAnswer 
      * @return 结果
      */
     @Override
@@ -71,9 +69,9 @@ public class LibraryAnswerServiceImpl implements ILibraryAnswerService
     }
 
     /**
-     * 批量删除【请填写功能名称】
+     * 批量删除
      * 
-     * @param ids 需要删除的【请填写功能名称】主键
+     * @param ids 需要删除的主键
      * @return 结果
      */
     @Override
@@ -83,9 +81,9 @@ public class LibraryAnswerServiceImpl implements ILibraryAnswerService
     }
 
     /**
-     * 删除【请填写功能名称】信息
+     * 删除信息
      * 
-     * @param id 【请填写功能名称】主键
+     * @param id 主键
      * @return 结果
      */
     @Override

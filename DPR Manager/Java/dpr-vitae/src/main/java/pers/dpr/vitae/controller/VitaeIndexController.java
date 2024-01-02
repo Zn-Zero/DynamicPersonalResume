@@ -22,22 +22,20 @@ import pers.dpr.common.utils.poi.ExcelUtil;
 import pers.dpr.common.core.page.TableDataInfo;
 
 /**
- * 【请填写功能名称】Controller
- * 
- * @author ry
+ * @author auto
  * @date 2023-12-26
  */
 @RestController
-@RequestMapping("/system/index")
+@RequestMapping("/vitae/index")
 public class VitaeIndexController extends BaseController
 {
     @Autowired
     private IVitaeIndexService vitaeIndexService;
 
     /**
-     * 查询【请填写功能名称】列表
+     * 查询列表
      */
-    @PreAuthorize("@ss.hasPermi('system:index:list')")
+    @PreAuthorize("@ss.hasPermi('vitae:index:list')")
     @GetMapping("/list")
     public TableDataInfo list(VitaeIndex vitaeIndex)
     {
@@ -47,22 +45,22 @@ public class VitaeIndexController extends BaseController
     }
 
     /**
-     * 导出【请填写功能名称】列表
+     * 导出列表
      */
-    @PreAuthorize("@ss.hasPermi('system:index:export')")
-    @Log(title = "【请填写功能名称】", businessType = BusinessType.EXPORT)
+    @PreAuthorize("@ss.hasPermi('vitae:index:export')")
+    @Log(title = "", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     public void export(HttpServletResponse response, VitaeIndex vitaeIndex)
     {
         List<VitaeIndex> list = vitaeIndexService.selectVitaeIndexList(vitaeIndex);
         ExcelUtil<VitaeIndex> util = new ExcelUtil<VitaeIndex>(VitaeIndex.class);
-        util.exportExcel(response, list, "【请填写功能名称】数据");
+        util.exportExcel(response, list, "数据");
     }
 
     /**
-     * 获取【请填写功能名称】详细信息
+     * 获取详细信息
      */
-    @PreAuthorize("@ss.hasPermi('system:index:query')")
+    @PreAuthorize("@ss.hasPermi('vitae:index:query')")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id)
     {
@@ -70,10 +68,10 @@ public class VitaeIndexController extends BaseController
     }
 
     /**
-     * 新增【请填写功能名称】
+     * 新增
      */
-    @PreAuthorize("@ss.hasPermi('system:index:add')")
-    @Log(title = "【请填写功能名称】", businessType = BusinessType.INSERT)
+    @PreAuthorize("@ss.hasPermi('vitae:index:add')")
+    @Log(title = "", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody VitaeIndex vitaeIndex)
     {
@@ -81,10 +79,10 @@ public class VitaeIndexController extends BaseController
     }
 
     /**
-     * 修改【请填写功能名称】
+     * 修改
      */
-    @PreAuthorize("@ss.hasPermi('system:index:edit')")
-    @Log(title = "【请填写功能名称】", businessType = BusinessType.UPDATE)
+    @PreAuthorize("@ss.hasPermi('vitae:index:edit')")
+    @Log(title = "", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@RequestBody VitaeIndex vitaeIndex)
     {
@@ -92,10 +90,10 @@ public class VitaeIndexController extends BaseController
     }
 
     /**
-     * 删除【请填写功能名称】
+     * 删除
      */
-    @PreAuthorize("@ss.hasPermi('system:index:remove')")
-    @Log(title = "【请填写功能名称】", businessType = BusinessType.DELETE)
+    @PreAuthorize("@ss.hasPermi('vitae:index:remove')")
+    @Log(title = "", businessType = BusinessType.DELETE)
 	@DeleteMapping("/{ids}")
     public AjaxResult remove(@PathVariable Long[] ids)
     {

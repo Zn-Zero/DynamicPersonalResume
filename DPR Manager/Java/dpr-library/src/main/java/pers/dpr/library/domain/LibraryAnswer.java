@@ -6,9 +6,7 @@ import pers.dpr.common.annotation.Excel;
 import pers.dpr.common.core.domain.BaseEntity;
 
 /**
- * 【请填写功能名称】对象 library_answer
- * 
- * @author ry
+ * @author auto
  * @date 2023-12-26
  */
 public class LibraryAnswer extends BaseEntity

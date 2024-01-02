@@ -9,9 +9,7 @@ import pers.dpr.vitae.domain.VitaeProjectExperience;
 import pers.dpr.vitae.service.IVitaeProjectExperienceService;
 
 /**
- * 【请填写功能名称】Service业务层处理
- * 
- * @author ry
+ * @author auto
  * @date 2023-12-26
  */
 @Service
@@ -21,10 +19,10 @@ public class VitaeProjectExperienceServiceImpl implements IVitaeProjectExperienc
     private VitaeProjectExperienceMapper vitaeProjectExperienceMapper;
 
     /**
-     * 查询【请填写功能名称】
+     * 查询
      * 
-     * @param id 【请填写功能名称】主键
-     * @return 【请填写功能名称】
+     * @param id 主键
+     * @return 
      */
     @Override
     public VitaeProjectExperience selectVitaeProjectExperienceById(Long id)
@@ -33,10 +31,10 @@ public class VitaeProjectExperienceServiceImpl implements IVitaeProjectExperienc
     }
 
     /**
-     * 查询【请填写功能名称】列表
+     * 查询列表
      * 
-     * @param vitaeProjectExperience 【请填写功能名称】
-     * @return 【请填写功能名称】
+     * @param vitaeProjectExperience 
+     * @return 
      */
     @Override
     public List<VitaeProjectExperience> selectVitaeProjectExperienceList(VitaeProjectExperience vitaeProjectExperience)
@@ -45,9 +43,9 @@ public class VitaeProjectExperienceServiceImpl implements IVitaeProjectExperienc
     }
 
     /**
-     * 新增【请填写功能名称】
+     * 新增
      * 
-     * @param vitaeProjectExperience 【请填写功能名称】
+     * @param vitaeProjectExperience 
      * @return 结果
      */
     @Override
@@ -58,9 +56,9 @@ public class VitaeProjectExperienceServiceImpl implements IVitaeProjectExperienc
     }
 
     /**
-     * 修改【请填写功能名称】
+     * 修改
      * 
-     * @param vitaeProjectExperience 【请填写功能名称】
+     * @param vitaeProjectExperience 
      * @return 结果
      */
     @Override
@@ -71,9 +69,9 @@ public class VitaeProjectExperienceServiceImpl implements IVitaeProjectExperienc
     }
 
     /**
-     * 批量删除【请填写功能名称】
+     * 批量删除
      * 
-     * @param ids 需要删除的【请填写功能名称】主键
+     * @param ids 需要删除的主键
      * @return 结果
      */
     @Override
@@ -83,9 +81,9 @@ public class VitaeProjectExperienceServiceImpl implements IVitaeProjectExperienc
     }
 
     /**
-     * 删除【请填写功能名称】信息
+     * 删除信息
      * 
-     * @param id 【请填写功能名称】主键
+     * @param id 主键
      * @return 结果
      */
     @Override

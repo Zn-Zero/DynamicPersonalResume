@@ -9,9 +9,7 @@ import pers.dpr.vitae.domain.VitaeSkills;
 import pers.dpr.vitae.service.IVitaeSkillsService;
 
 /**
- * 【请填写功能名称】Service业务层处理
- * 
- * @author ry
+ * @author auto
  * @date 2023-12-26
  */
 @Service
@@ -21,10 +19,10 @@ public class VitaeSkillsServiceImpl implements IVitaeSkillsService
     private VitaeSkillsMapper vitaeSkillsMapper;
 
     /**
-     * 查询【请填写功能名称】
+     * 查询
      * 
-     * @param id 【请填写功能名称】主键
-     * @return 【请填写功能名称】
+     * @param id 主键
+     * @return 
      */
     @Override
     public VitaeSkills selectVitaeSkillsById(Long id)
@@ -33,10 +31,10 @@ public class VitaeSkillsServiceImpl implements IVitaeSkillsService
     }
 
     /**
-     * 查询【请填写功能名称】列表
+     * 查询列表
      * 
-     * @param vitaeSkills 【请填写功能名称】
-     * @return 【请填写功能名称】
+     * @param vitaeSkills 
+     * @return 
      */
     @Override
     public List<VitaeSkills> selectVitaeSkillsList(VitaeSkills vitaeSkills)
@@ -45,9 +43,9 @@ public class VitaeSkillsServiceImpl implements IVitaeSkillsService
     }
 
     /**
-     * 新增【请填写功能名称】
+     * 新增
      * 
-     * @param vitaeSkills 【请填写功能名称】
+     * @param vitaeSkills 
      * @return 结果
      */
     @Override
@@ -58,9 +56,9 @@ public class VitaeSkillsServiceImpl implements IVitaeSkillsService
     }
 
     /**
-     * 修改【请填写功能名称】
+     * 修改
      * 
-     * @param vitaeSkills 【请填写功能名称】
+     * @param vitaeSkills 
      * @return 结果
      */
     @Override
@@ -71,9 +69,9 @@ public class VitaeSkillsServiceImpl implements IVitaeSkillsService
     }
 
     /**
-     * 批量删除【请填写功能名称】
+     * 批量删除
      * 
-     * @param ids 需要删除的【请填写功能名称】主键
+     * @param ids 需要删除的主键
      * @return 结果
      */
     @Override
@@ -83,9 +81,9 @@ public class VitaeSkillsServiceImpl implements IVitaeSkillsService
     }
 
     /**
-     * 删除【请填写功能名称】信息
+     * 删除信息
      * 
-     * @param id 【请填写功能名称】主键
+     * @param id 主键
      * @return 结果
      */
     @Override

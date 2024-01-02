@@ -6,9 +6,7 @@ import pers.dpr.common.annotation.Excel;
 import pers.dpr.common.core.domain.BaseEntity;
 
 /**
- * 【请填写功能名称】对象 vitae_skills
- * 
- * @author ry
+ * @author auto
  * @date 2023-12-26
  */
 public class VitaeSkills extends BaseEntity

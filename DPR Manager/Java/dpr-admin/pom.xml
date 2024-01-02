@@ -61,6 +61,24 @@
             <artifactId>dpr-generator</artifactId>
         </dependency>
 
+        <!-- 面试提库-->
+        <dependency>
+            <groupId>pers.dpr</groupId>
+            <artifactId>dpr-library</artifactId>
+        </dependency>
+
+        <!-- 投递记录-->
+        <dependency>
+            <groupId>pers.dpr</groupId>
+            <artifactId>dpr-record</artifactId>
+        </dependency>
+
+        <!-- 简历配置-->
+        <dependency>
+            <groupId>pers.dpr</groupId>
+            <artifactId>dpr-vitae</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>

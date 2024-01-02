@@ -26,7 +26,7 @@ import pers.dpr.common.core.page.TableDataInfo;
  * @date 2023-12-26
  */
 @RestController
-@RequestMapping("/vitae/experience")
+@RequestMapping("/vitae/project")
 public class VitaeProjectExperienceController extends BaseController
 {
     @Autowired
@@ -35,7 +35,7 @@ public class VitaeProjectExperienceController extends BaseController
     /**
      * 查询列表
      */
-    @PreAuthorize("@ss.hasPermi('vitae:experience:list')")
+    @PreAuthorize("@ss.hasPermi('vitae:project:list')")
     @GetMapping("/list")
     public TableDataInfo list(VitaeProjectExperience vitaeProjectExperience)
     {
@@ -47,7 +47,7 @@ public class VitaeProjectExperienceController extends BaseController
     /**
      * 导出列表
      */
-    @PreAuthorize("@ss.hasPermi('vitae:experience:export')")
+    @PreAuthorize("@ss.hasPermi('vitae:project:export')")
     @Log(title = "", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     public void export(HttpServletResponse response, VitaeProjectExperience vitaeProjectExperience)
@@ -60,7 +60,7 @@ public class VitaeProjectExperienceController extends BaseController
     /**
      * 获取详细信息
      */
-    @PreAuthorize("@ss.hasPermi('vitae:experience:query')")
+    @PreAuthorize("@ss.hasPermi('vitae:project:query')")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id)
     {
@@ -70,7 +70,7 @@ public class VitaeProjectExperienceController extends BaseController
     /**
      * 新增
      */
-    @PreAuthorize("@ss.hasPermi('vitae:experience:add')")
+    @PreAuthorize("@ss.hasPermi('vitae:project:add')")
     @Log(title = "", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody VitaeProjectExperience vitaeProjectExperience)
@@ -81,7 +81,7 @@ public class VitaeProjectExperienceController extends BaseController
     /**
      * 修改
      */
-    @PreAuthorize("@ss.hasPermi('vitae:experience:edit')")
+    @PreAuthorize("@ss.hasPermi('vitae:project:edit')")
     @Log(title = "", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@RequestBody VitaeProjectExperience vitaeProjectExperience)
@@ -92,7 +92,7 @@ public class VitaeProjectExperienceController extends BaseController
     /**
      * 删除
      */
-    @PreAuthorize("@ss.hasPermi('vitae:experience:remove')")
+    @PreAuthorize("@ss.hasPermi('vitae:project:remove')")
     @Log(title = "", businessType = BusinessType.DELETE)
 	@DeleteMapping("/{ids}")
     public AjaxResult remove(@PathVariable Long[] ids)
